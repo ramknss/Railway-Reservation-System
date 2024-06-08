@@ -1,0 +1,15 @@
+{% extends 'html/base.html' %}
+{% block title %}Confirm Train Deletion{% endblock %}
+{% block content %}
+<div class="card col-md col-sm col-xm shadow-lg m-2">
+    <div class="card-body">
+        <h3>Confirm Train Deletion</h3>
+        <p>Are you sure you want to delete the train "{{ train.name }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="{% url 'td' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

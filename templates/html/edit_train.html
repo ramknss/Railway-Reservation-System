@@ -1,0 +1,16 @@
+{% extends 'html/base.html' %}
+{% block title %}Tickets Details{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container mt-4">
+	<div class="jumbotron">
+		<h1>Edit Train Details</h1>
+    	<form method="post">
+       		{% csrf_token %}
+        	{{ form.as_p }}
+        	<button type="submit">Save Changes</button>
+    	</form>
+	</div>
+</div>
+
+{% endblock %}

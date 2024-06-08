@@ -1,0 +1,44 @@
+{% extends 'html/base.html' %}
+{% block title %}Tickets Details{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container mt-4">
+	<div class="jumbotron">
+		<h1>Your Tickets</h1>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Train ID</th>
+                <th>Train Number</th>
+                <th>Train Type</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Passenger Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in user_tickets %}
+            <tr>
+                <td>{{ ticket.train_id }}</td>
+                <td>{{ ticket.train.trainnum }}</td>
+                <td>{{ ticket.train.traintype }}</td>
+                <td>{{ ticket.train.trainsrc }}</td>
+                <td>{{ ticket.train.traindes }}</td>
+                <td>{{ ticket.name }}</td>
+                <td>
+                    <a class="btn btn-danger"href="#" onclick="confirmCancellation('{{ ticket.id }}')">Cancel Ticket</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        function confirmCancellation(ticketId) {
+            if (confirm("Are you sure you want to cancel this ticket?")) {
+                window.location.href = "{% url 'cancel_ticket' 0 %}".replace('0', ticketId);
+            }
+        }
+    </script>
+	</div>
+</div>
+{% endblock %}

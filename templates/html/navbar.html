@@ -1,0 +1,66 @@
+{% load static %}   
+<nav class="navbar navbar-expand-sm bg-info navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="{% static 'images/icons/logo.png' %}" alt="logo" class="square" width="40px" height="30px">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'hm' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/reg/' %}active{% endif %}" href="{% url 'rg' %}">Register</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'hm' %}">Home</a>
+      </li>
+      {% if request.user.is_superuser %}
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/adtr/' %}active{% endif %} " href="{% url 'adt' %}">Add trains</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/trd/' %}active{% endif %}" href="{% url 'td' %}">Edit Trains</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/trd/' %}active{% endif %}" href="{% url 'td' %}">Book Tickets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/yourtickets/' %}active{% endif %} " href="{% url 'your_tickets' %}">Your Tickets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/create_story/' %}active{% endif %}" href="{% url 'create_story' %}">Write Story</a>
+      </li>
+      {% endif %}
+      {% endif %}
+    </ul>
+    <ul class="navbar-nav ml-auto" style="margin-right:120px">
+      {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/lgn/' %}active{% endif %}" href="{% url 'lg' %}">Login</a>
+      </li>
+      {% else %}
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+          Welcome {% if user.is_superuser %}
+                    {{user}}
+                  {% else %}
+                    {{user}}
+                  {% endif %} 
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item {% if request.path == '/pfle/' %}active{% endif %}" href="{% url 'pf' %}">Profile</a>
+          <a class="dropdown-item{% if request.path == '/chge/' %}active{% endif %}" href="{% url 'cge' %}">Change Password</a>
+          <a class="dropdown-item {% if request.path == '/lgot/' %}active{% endif %}" href="{% url 'lgt' %}">Logout</a>
+        </div>
+      </div>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

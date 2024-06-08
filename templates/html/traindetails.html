@@ -1,0 +1,47 @@
+{% extends 'html/base.html' %}
+{% block title %}Train Details{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="card col-md col-sm col-xm shadow-lg m-2" style="background:black">
+			<div class="card-body"style="background:white">
+				<div class="row my-2">
+					<div class="col">
+						<h3>Train Details</h3>
+					</div>
+				</div>
+				<table class="table table-responsive" style="background:white !important">
+					<thead>
+                        <tr>
+                            <th>Train Number</th>
+                			<th>Train Type</th>
+                			<th>Train Source</th>
+                			<th>Train Destination</th>
+                			<th>Departure Time from Source</th>
+                			<th>Arrival Time of Destination</th>
+                			<th>Ticket Cost</th>
+            			</tr>
+        			</thead>
+					<tbody>
+            			{% for train in trains %}
+                			<tr>
+                    			<td>{{train.trainnum}}</td>
+                    			<td>{{train.traintype}}</td>
+                    			<td>{{train.trainsrc}}</td>
+                    			<td>{{train.traindes}}</td>
+                    			<td>{{train.deptimesrc}}</td>
+                    			<td>{{train.arrtimedes}}</td>
+                    			<td>{{train.ticket_price}}</td>
+                    			{% if user.is_superuser %}
+                    			<td><a class="btn btn-primary " href="{% url 'edit_train' train.id %}">Edit</a></td>
+                    			<td><a class="btn btn-primary " href="{% url 'delete_train' train.id %}">Delete</a></td>
+                    			{% else %}
+                    			<td><a class="btn btn-primary " href="{% url 'res' t_id=train.id %}">Book Tickets</a></td>
+                    			{% endif %}
+                			</tr>
+            			{% endfor %}
+       				 </tbody>
+				</table>
+			</div>
+</div>
+{% endblock %}

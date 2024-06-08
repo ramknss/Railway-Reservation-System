@@ -1,0 +1,33 @@
+{% extends 'html/base.html' %}
+{% block title %}About{% endblock %}
+{% block content %}
+{% load static %}
+<style>
+    .image-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+	.image-wrapper {
+        text-align: center;
+    }
+</style>
+<div class="container mt-4">
+	<div class="jumbotron">
+		<h4>About Page</h4>
+		<p>Welcome to our railway reservation software!
+		 We are dedicated to providing an efficient and seamless railway booking experience 
+		 for travelers around the globe. Our platform is designed to simplify the process of 
+		 reserving train tickets, ensuring that your journey begins with ease and convenience.</p>
+		 <div class="image-container">
+		 <div class="image-wrapper"><img src="{% static "images/Developers/Sreeram.jpeg" %}" alt="Image" class="square" width="200px" height="200px" style="display: block; margin: 0 auto;"><p><b>Sreeram</b></p></div>
+		 <div class="image-wrapper"><img src="{% static "images/Developers/Sreeram.jpeg" %}" alt="Image" class="square" width="200px" height="200px" style="display: block; margin: 0 auto;"><p><b>Sreeram</b></p></div>
+		 <div class="image-wrapper"><img src="{% static "images/Developers/Sreeram.jpeg" %}" alt="Image" class="square" width="200px" height="200px" style="display: block; margin: 0 auto;"><p><b>Sreeram</b></p></div>
+		 <div class="image-wrapper"><img src="{% static "images/Developers/Sreeram.jpeg" %}" alt="Image" class="square" width="200px" height="200px" style="display: block; margin: 0 auto;"><p><b>Sreeram</b></p></div>
+ 
+		</div>
+	</div>
+</div>
+
+{% endblock %}

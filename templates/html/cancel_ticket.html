@@ -1,0 +1,16 @@
+{% extends 'html/base.html' %}
+{% block title %}Add Trains{% endblock %}
+{% block content %}
+{% load static %}
+
+
+
+<h1>Cancel Ticket</h1>
+    <p>Are you sure you want to cancel this ticket?</p>
+    <form action="{% url 'cancel_ticket' ticket.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Cancel</button>
+        <a href="{% url 'your_tickets' %}">No, Go Back</a>
+    </form>
+
+{% endblock %}

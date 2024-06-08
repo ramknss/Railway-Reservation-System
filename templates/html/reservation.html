@@ -1,0 +1,19 @@
+{% extends 'html/base.html' %}
+{% block title %}Reservation{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container mt-4">
+	<div class="jumbotron">
+		<h4>Reservation Details</h4>
+		<table class="table table-responsive">
+			<td>Train Number=> {{train.trainnum}}</td><tr></tr>
+			<td>Train Type=> {{train.traintype}}</td><tr></tr>
+			<td>Train Source=> {{train.trainsrc}}</td><tr></tr>
+			<td>Train Destination=> {{train.traindes}}</td><tr></tr>
+		</table>
+		<a class="btn btn-primary" href="{% url 'cfr' train_id=train.id %}">Confirm Reservation</a>
+	</div>
+     
+</div>
+
+{% endblock %}

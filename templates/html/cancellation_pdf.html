@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Cancellation Confirmation</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .ticket-details {
+            margin-top: 20px;
+        }
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ticket Cancellation Confirmation</h1>
+        <div class="ticket-details">
+            <p><strong>Train Number:</strong> {{ ticket.train.trainnum }}</p>
+            <p><strong>Source:</strong> {{ ticket.train.trainsrc }}</p>
+            <p><strong>Destination:</strong> {{ ticket.train.traindes }}</p>
+            <!-- Add more ticket details as needed -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'html/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+{% load static %}
+<style type="text/css">
+	.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+  p{
+ 	font-size:40px;
+ }
+ .heading{
+		color: white;
+
+	}
+</style>
+<div class="container mt-4"">
+		<div class="heading"><center><h1> Welcome to Railway Reservation System</h1></center></div>
+		<img src="static\home.png" height="600" width="1100">
+	<div class="btn"  >
+		<a class="btn btn-primary {% if request.path == '/abt/' %}active{% endif %}" href="{% url 'ab' %}">about us</a>
+		
+		<a class="btn btn-primary ml-2 {% if request.path == '/cnt/' %}active{% endif %}" href="{% url 'ct' %}" >contact us</a>
+	</div>
+</div>
+{% endblock %}

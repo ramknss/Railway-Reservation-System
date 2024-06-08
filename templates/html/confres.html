@@ -1,0 +1,23 @@
+{% extends 'html/base.html' %}
+{% block title %}Add Trains{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-4">
+	<div class="card col-md-5 mx-auto shadow-lg">
+		<div class="card-body">
+			<h4>Ticket Booking</h4>
+			<form method="post" >
+				{% csrf_token %}
+                {{ form.as_p }}
+                <input type="hidden" name="train_id" value="{{ train.id }}">
+        		<input type="hidden" name="train_name" value="{{ train.name }}">
+        		<input type="hidden" name="train_source" value="{{ train.source }}">
+        		<input type="hidden" name="train_destination" value="{{ train.destination }}">
+        		<button type="submit">Book</button>
+			</form>	
+		</div>
+	</div>
+</div>
+
+{% endblock %}
